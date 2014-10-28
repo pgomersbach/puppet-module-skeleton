@@ -1,0 +1,12 @@
+HOSTS:
+  centos-65-x64:
+    roles:
+      - master
+    vmname: centos65
+    platform: el-6-x86_65
+    amisize: t1.micro
+    hypervisor: ec2
+    snapshot: foss
+CONFIG:
+  nfs_server: none
+  consoleport: 443

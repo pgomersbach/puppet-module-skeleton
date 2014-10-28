@@ -1,0 +1,15 @@
+HOSTS:
+  ubuntu-server-1404-x64:
+    roles:
+      - master
+    vmname: ubuntu1404
+    platform: ubuntu-server-14.04-amd64
+    amisize: t1.micro
+    hypervisor: ec2
+    snapshot: foss
+
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+
+
