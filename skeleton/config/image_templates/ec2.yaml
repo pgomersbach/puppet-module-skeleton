@@ -1,0 +1,26 @@
+AMI:
+  centos-6-x86-64-west:
+    :image:
+      :pe: ami-42fb6e72
+    :region: us-west-2
+
+  rhel-6-x86-64-west:
+    :image:
+      :pe: ami-acf3669c
+    :region: us-west-2
+
+  el-6-x86_64-west:
+    :image:
+      :pe: ami-aa8b039a
+      :foss: ami-aa8b039a
+    :region: us-west-2
+
+  ubuntu-rely:
+    :image:
+      :foss: ami-4a2eaf22
+    :region: us-east-1
+
+  centos-rely:
+    :image:
+      :foss: ami-05ebd06c
+    :region: us-east-1
