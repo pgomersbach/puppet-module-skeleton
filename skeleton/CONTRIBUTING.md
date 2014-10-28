@@ -80,10 +80,31 @@ with:
 This will run the tests on an Ubuntu 12.04 virtual machine. You can also
 run the integration tests against Centos 6.5 with.
 
-    RS_SET=centos-64-x64 bundle exec rake acceptances
+    RS_SET=centos-64-x64 bundle exec rake acceptance
 
 If you don't want to have to recreate the virtual machine every time you
 can use `BEAKER_DESTROY=no` and `BEAKER_PROVISION=no`. On the first run you will
 at least need `BEAKER_PROVISION` set to yes (the default). The Vagrantfile
 for the created virtual machines will be in `.vagrant/beaker_vagrant_files`.
 
+## Integration tests using Amazon ec2
+
+To use vagrant on Amazon ec2, place '.fog' file in your home directory containing the AWS 'access key id' and 'secret access key'.
+
+:default:
+  :aws_access_key_id: <access_key_id>
+  :aws_secret_access_key: <secret_access_key>
+
+If there isn't a space above between the key, you get "no implicit conversion of Symbol into Integer (TypeError)"
+
+Make sure this file is not world readable:
+
+   chmod 600 ~/.fog
+
+This will run the tests on an Ubuntu 14.04 instance, using a t1.small flavor in the us-east1 availability zone:
+
+   RS_SET=aws-ubuntu-1404-x64 bundle exec rake acceptance
+
+To list available nodes:
+
+   bundle exec rake beaker_nodes  
