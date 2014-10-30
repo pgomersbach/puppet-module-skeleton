@@ -7,7 +7,7 @@ set -e
 REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-${DISTRIB_CODENAME}.deb"
 repo_deb_path=$(mktemp)
 wget --output-document="${repo_deb_path}" "${REPO_DEB_URL}"
-dpkg -i "${repo_deb_path}"
+sudo dpkg -i "${repo_deb_path}"
 
 # Update repo's
 sudo apt-get update
