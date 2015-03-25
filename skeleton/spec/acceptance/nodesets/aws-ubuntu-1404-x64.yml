@@ -7,9 +7,8 @@ HOSTS:
     amisize: t1.micro
     hypervisor: ec2
     snapshot: foss
-
+    user: ubuntu
 CONFIG:
   nfs_server: none
   consoleport: 443
-
-
+  type: foss

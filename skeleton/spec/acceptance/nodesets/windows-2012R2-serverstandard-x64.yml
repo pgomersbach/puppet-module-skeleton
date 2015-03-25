@@ -1,0 +1,12 @@
+HOSTS:
+  windows-2012R2-serverstandard-x64:
+    roles:
+      - agent
+    platform: windows-server-amd64
+    box : opentable/win-2012r2-standard-amd64-nocm
+    box_url : opentable/win-2012r2-standard-amd64-nocm
+    hypervisor : vagrant
+    user: vagrant
+CONFIG:
+  log_level: verbose
+  type: git

@@ -12,8 +12,11 @@ sudo dpkg -i "${repo_deb_path}"
 # Update repo's
 sudo apt-get update
 
-# Install
+# Install packages
 sudo apt-get -y install git bundler puppet libxslt-dev libxml2-dev
+
+# Install docker
+sudo wget -qO- https://get.docker.com/ | sh
 
 # Clone skeleton repo
 git clone https://github.com/pgomersbach/puppet-module-skeleton

@@ -1,7 +1,7 @@
 AMI:
   ubuntu1404:
     :image:
-      :foss: ami-4a2eaf22
+      :foss: ami-84562dec
     :region: us-east-1
 
   centos65:
