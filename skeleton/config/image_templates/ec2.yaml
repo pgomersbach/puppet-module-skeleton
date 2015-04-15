@@ -1,11 +1,11 @@
 AMI:
   ubuntu1404:
     :image:
-      :foss: ami-84562dec
-    :region: us-east-1
+      :foss: ami-6989a659
+    :region: us-west-2
 
   centos65:
     :image:
-      :foss: ami-05ebd06c
-    :region: us-east-1
+      :foss: ami-56e48766
+    :region: us-west-2
 
