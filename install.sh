@@ -15,11 +15,6 @@ sudo apt-get update
 # Install packages
 sudo apt-get -y install git bundler puppet libxslt-dev libxml2-dev zlib1g-dev
 
-# Install docker
-sudo wget -qO- https://get.docker.com/ | sh
-sudo usermod -aG docker $USER
-exec sg docker newgrp `id -gn`
-
 # Clone skeleton repo
 git clone https://github.com/pgomersbach/puppet-module-skeleton
 
@@ -27,8 +22,8 @@ git clone https://github.com/pgomersbach/puppet-module-skeleton
 cd puppet-module-skeleton
 find skeleton -type f | git checkout-index --stdin --force --prefix="$HOME/.puppet/var/puppet-module/" --
 cd -
-echo "To use this skeleton:"
-echo "puppet module generate user-module"
-echo "cd user-module"
-echo "bundle install"
-echo "bundle exec rake"
+
+# Install docker
+sudo wget -qO- https://get.docker.com/ | sh
+sudo usermod -aG docker $USER
+exec sg docker newgrp `id -gn
