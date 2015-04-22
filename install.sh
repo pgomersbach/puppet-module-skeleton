@@ -17,6 +17,8 @@ sudo apt-get -y install git bundler puppet libxslt-dev libxml2-dev
 
 # Install docker
 sudo wget -qO- https://get.docker.com/ | sh
+sudo usermod -aG docker $USER
+exec sg docker newgrp `id -gn`
 
 # Clone skeleton repo
 git clone https://github.com/pgomersbach/puppet-module-skeleton
