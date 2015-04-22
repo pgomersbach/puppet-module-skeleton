@@ -13,7 +13,7 @@ sudo dpkg -i "${repo_deb_path}"
 sudo apt-get update
 
 # Install packages
-sudo apt-get -y install git bundler puppet libxslt-dev libxml2-dev
+sudo apt-get -y install git bundler puppet libxslt-dev libxml2-dev zlib1g-dev
 
 # Install docker
 sudo wget -qO- https://get.docker.com/ | sh
