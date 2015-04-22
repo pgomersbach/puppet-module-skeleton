@@ -26,4 +26,4 @@ cd -
 # Install docker
 sudo wget -qO- https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
-exec sg docker newgrp `id -gn
+exec sg docker newgrp `id -gn`
