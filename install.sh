@@ -4,7 +4,7 @@ set -e
 . /etc/lsb-release
 
 # Install puppetlabs repo
-REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-${DISTRIB_CODENAME}.deb"
+REPO_DEB_URL="https://apt.puppetlabs.com/puppetlabs-release-stable.deb"
 repo_deb_path=$(mktemp)
 wget --output-document="${repo_deb_path}" "${REPO_DEB_URL}"
 sudo dpkg -i "${repo_deb_path}"
