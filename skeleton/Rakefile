@@ -47,6 +47,13 @@ end
 #  sh "metadata-json-lint metadata.json"
 # end
 
+desc "Run beaker using rspec .fixtures.yml."
+task :beaker_fixtures => [
+  :spec_prep,
+  :beaker,
+  :spec_clean,
+]
+
 desc "Run syntax, lint, and spec tests."
 task :test => [
   :syntax,
