@@ -15,7 +15,9 @@ describe '<%= metadata.name %>' do
 <% if metadata.name.start_with?('role_') %>       
           it { is_expected.to contain_class('profile_base') }
 <% elsif metadata.name.start_with?('profile_') %>
+  <% if metadata.name.start_with?('role_base') %>
           it { is_expected.to contain_class('ntp') }
+  <% end %>
 <% else %> 
           it { is_expected.to contain_class('<%= metadata.name %>::params') }
           it { is_expected.to contain_class('<%= metadata.name %>::install').that_comes_before('<%= metadata.name %>::config') }
