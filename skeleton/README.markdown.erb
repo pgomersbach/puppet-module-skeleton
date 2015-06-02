@@ -1,20 +1,32 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with <%= metadata.name %>](#setup)
+2. [Roles and Profiles](#roles)
+3. [Module Description - What the module does and why it is useful](#module-description)
+4. [Setup - The basics of getting started with <%= metadata.name %>](#setup)
     * [What <%= metadata.name %> affects](#what-<%= metadata.name %>-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with <%= metadata.name %>](#beginning-with-<%= metadata.name %>)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+5. [Usage - Configuration options and additional functionality](#usage)
+6. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+7. [Limitations - OS compatibility, etc.](#limitations)
+8. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
 A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
 
+## Roles and Profiles
+
+Modules are generated using a module skeleton, this skeleton generates modules based on the 'Roles and Profiles' puppet pattern.
+For more information see the skeleton repository: https://github.com/pgomersbach/puppet-module-skeleton.git
+<% if metadata.name.start_with?('role_') %> 
+This module is genarated as a 'role' and includes one profile named 'base'.
+<% elsif metadata.name.start_with?('profile_') %>
+This module is genarated as a 'profile' and includes as a example the 'ntp' class.
+<% else %> 
+This module is generated using a default module layout, it is not part of a role or profile.
+<% end %>
 ## Module Description
 
 If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
