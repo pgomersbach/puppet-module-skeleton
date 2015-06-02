@@ -7,7 +7,20 @@
 # [*sample_parameter*]
 #   Explanation of what this parameter affects and what it defaults to.
 #
-class <%= metadata.name %> (
+class <%= metadata.name %>
+<% if metadata.name.start_with?('role_') %>
+{
+  # a role includes one or more profiles and at least a 'base' profile
+  include profile_base
+<% elsif metadata.name.start_with?('profile_') %>
+  <% if metadata.name.start_with?('profile_base') %>
+{
+    include ntp
+  <% else %>
+{
+  # a profile class includes one or more classes, please include below
+  <% end %>
+<% else %>(
   $package_name = $::<%= metadata.name %>::params::package_name,
   $service_name = $::<%= metadata.name %>::params::service_name,
 ) inherits ::<%= metadata.name %>::params {
@@ -18,4 +31,5 @@ class <%= metadata.name %> (
   class { '::<%= metadata.name %>::config': } ~>
   class { '::<%= metadata.name %>::service': } ->
   Class['::<%= metadata.name %>']
+<% end %>
 }
