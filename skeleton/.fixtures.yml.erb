@@ -1,5 +1,15 @@
 fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+<% if metadata.name.start_with?('role_') %> 
+# role module layout, include profile base and ntp module
+    profile_base: "https://github.com/pgomersbach/<%= metadata.full_module_name.sub(metadata.name, "profile_base") %>.git"
+    ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
+<% elsif metadata.name.start_with?('profile_') %>
+# profile module layout, default include ntp module
+    ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
+<% else %> 
+# default module layout
+<% end %>
   symlinks:
     <%= metadata.name %>: "#{source_dir}"
