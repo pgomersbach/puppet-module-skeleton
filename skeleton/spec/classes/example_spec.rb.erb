@@ -12,7 +12,11 @@ describe '<%= metadata.name %>' do
           let(:params) {{ }}
 
           it { is_expected.to compile.with_all_deps }
-
+<% if metadata.name.start_with?('role_') %>       
+          it { is_expected.to contain_class('profile_base') }
+<% elsif metadata.name.start_with?('profile_') %>
+          it { is_expected.to contain_class('ntp') }
+<% else %> 
           it { is_expected.to contain_class('<%= metadata.name %>::params') }
           it { is_expected.to contain_class('<%= metadata.name %>::install').that_comes_before('<%= metadata.name %>::config') }
           it { is_expected.to contain_class('<%= metadata.name %>::config') }
@@ -20,6 +24,7 @@ describe '<%= metadata.name %>' do
 
           it { is_expected.to contain_service('<%= metadata.name %>') }
           it { is_expected.to contain_package('<%= metadata.name %>').with_ensure('present') }
+<% end %>
         end
       end
     end
