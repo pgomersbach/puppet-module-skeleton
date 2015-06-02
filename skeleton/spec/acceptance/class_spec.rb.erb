@@ -14,6 +14,32 @@ describe '<%= metadata.name %> class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
+<% if metadata.name.start_with?('role_') %>       
+   # a role can include one ore more profiles, testing if work idempotently with no errors is sufficient
+<% elsif metadata.name.start_with?('profile_') %>
+  <% if metadata.name.start_with?('profile_base') %>
+   # the base profile should have ntp installed, enabled and running
+   describe package('ntp') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('ntp') do
+      it { is_expected.to be_enabled }
+      it { is_expected.to be_running }
+    end
+  <% else %>
+# a profile class should test if the included packages and services are installed, enabled and running. Please adept to your needs. See example below:
+#   describe package('ntp') do
+#      it { is_expected.to be_installed }
+#    end
+
+#    describe service('ntp') do
+#      it { is_expected.to be_enabled }
+#      it { is_expected.to be_running }
+#    end
+  <% end %>
+<% else %>
+    # default module tests
     describe package('<%= metadata.name %>') do
       it { is_expected.to be_installed }
     end
@@ -22,5 +48,6 @@ describe '<%= metadata.name %> class' do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
+<% end %>
   end
 end
