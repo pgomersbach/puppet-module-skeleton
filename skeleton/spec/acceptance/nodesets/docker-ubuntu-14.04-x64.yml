@@ -4,4 +4,5 @@ HOSTS:
     image: ubuntu:14.04
     hypervisor: docker
 CONFIG: 
+  log_level: verbose
   type: foss
