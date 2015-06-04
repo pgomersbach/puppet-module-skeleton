@@ -9,6 +9,7 @@ HOSTS:
     snapshot: foss
     user: ubuntu
 CONFIG:
+  log_level: verbose
   nfs_server: none
   consoleport: 443
   type: foss
