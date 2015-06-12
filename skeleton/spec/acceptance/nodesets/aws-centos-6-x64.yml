@@ -4,7 +4,7 @@ HOSTS:
       - master
     vmname: centos65
     platform: el-6-x86_65
-    amisize: t2.small
+    amisize: m3.medium
     hypervisor: ec2
     snapshot: foss
 CONFIG:

@@ -4,7 +4,7 @@ HOSTS:
       - master
     vmname: ubuntu1404
     platform: ubuntu-1404-amd64
-    amisize: t2.small
+    amisize: m3.medium
     hypervisor: ec2
     snapshot: foss
     user: ubuntu
