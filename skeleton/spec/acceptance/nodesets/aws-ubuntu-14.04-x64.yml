@@ -3,8 +3,8 @@ HOSTS:
     roles:
       - master
     vmname: ubuntu1404
-    platform: ubuntu-server-14.04-amd64
-    amisize: t1.micro
+    platform: ubuntu-1404-amd64
+    amisize: t2.small
     hypervisor: ec2
     snapshot: foss
     user: ubuntu
