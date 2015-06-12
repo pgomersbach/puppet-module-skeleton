@@ -8,7 +8,7 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
-  gem "r10k"
+  gem "puppet-lint", :git => 'https://github.com/rodjek/puppet-lint.git'
 end
 
 group :development do
