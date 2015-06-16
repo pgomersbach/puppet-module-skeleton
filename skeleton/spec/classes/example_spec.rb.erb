@@ -5,7 +5,9 @@ describe '<%= metadata.name %>' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
         let(:facts) do
-          facts
+          facts.merge({
+            :concat_basedir => "/foo"
+          })
         end
 
         context "<%= metadata.name %> class without any parameters" do
@@ -23,7 +25,6 @@ describe '<%= metadata.name %>' do
           it { is_expected.to contain_class('<%= metadata.name %>::install').that_comes_before('<%= metadata.name %>::config') }
           it { is_expected.to contain_class('<%= metadata.name %>::config') }
           it { is_expected.to contain_class('<%= metadata.name %>::service').that_subscribes_to('<%= metadata.name %>::config') }
-
           it { is_expected.to contain_service('<%= metadata.name %>') }
           it { is_expected.to contain_package('<%= metadata.name %>').with_ensure('present') }
 <% end %>
