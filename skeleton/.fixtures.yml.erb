@@ -5,9 +5,11 @@ fixtures:
 # role module layout, include profile base and ntp module
     profile_base: "https://github.com/pgomersbach/<%= metadata.full_module_name.sub(metadata.name, "profile_base") %>.git"
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
+    rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
 <% elsif metadata.name.start_with?('profile_') %>
 # profile module layout, default include ntp module
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
+    rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
 <% else %> 
 # default module layout
 <% end %>

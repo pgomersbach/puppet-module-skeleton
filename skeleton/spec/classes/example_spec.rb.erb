@@ -16,6 +16,7 @@ describe '<%= metadata.name %>' do
           it { is_expected.to compile.with_all_deps }
 <% if metadata.name.start_with?('role_') %>       
           it { is_expected.to contain_class('profile_base') }
+          it { is_expected.to contain_class('profile_base::rspec_monitor') }
 <% elsif metadata.name.start_with?('profile_') %>
   <% if metadata.name.start_with?('role_base') %>
           it { is_expected.to contain_class('ntp') }
@@ -25,6 +26,7 @@ describe '<%= metadata.name %>' do
           it { is_expected.to contain_class('<%= metadata.name %>::install').that_comes_before('<%= metadata.name %>::config') }
           it { is_expected.to contain_class('<%= metadata.name %>::config') }
           it { is_expected.to contain_class('<%= metadata.name %>::service').that_subscribes_to('<%= metadata.name %>::config') }
+
           it { is_expected.to contain_service('<%= metadata.name %>') }
           it { is_expected.to contain_package('<%= metadata.name %>').with_ensure('present') }
 <% end %>

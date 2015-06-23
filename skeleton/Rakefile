@@ -47,11 +47,15 @@ end
 #  sh "metadata-json-lint metadata.json"
 # end
 
+task :setbeaker_env do
+  system("BEAKER=true rake beaker")
+end
+
 desc "Run beaker using rspec .fixtures.yml."
 task :beaker_fixtures => [
-  :spec_prep,
-  :beaker,
   :spec_clean,
+  :spec_prep,
+  :setbeaker_env,
 ]
 
 desc "Run syntax, lint, and spec tests."

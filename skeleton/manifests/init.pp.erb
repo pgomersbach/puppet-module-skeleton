@@ -10,7 +10,9 @@
 class <%= metadata.name %><% if metadata.name.start_with?('role_') %>
 {
   # a role includes one or more profiles and at least a 'base' profile
-  include profile_base<% elsif metadata.name.start_with?('profile_') %><% if metadata.name.start_with?('profile_base') %>
+  include ::profile_base
+  # include rspec monitor to make rspec acceptance test available to monitor system
+  include ::profile_base::rspec_monitor<% elsif metadata.name.start_with?('profile_') %><% if metadata.name.start_with?('profile_base') %>
 {
     include ntp<% else %>
 {
