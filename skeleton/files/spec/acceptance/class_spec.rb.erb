@@ -28,7 +28,7 @@ describe '<%= metadata.name %> class' do
 <% elsif metadata.name.start_with?('profile_') %>
   <% if metadata.name.start_with?('profile_base') %>
    # the base profile should have ntp installed, enabled and running
-   describe package('ntp') do
+    describe package('ntp') do
       it { is_expected.to be_installed }
     end
 
