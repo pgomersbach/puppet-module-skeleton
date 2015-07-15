@@ -24,7 +24,7 @@ RSpec.configure do |c|
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => '<%= metadata.name %>')
     hosts.each do |host|
-      on host ,shell('mkdir /tmp/modules')
+      on host ,shell('mkdir -p /tmp/modules')
       scp_to host, "#{proj_root}/spec/fixtures/modules", "/tmp", {:ignore => ["<%= metadata.name %>"]}
       on host, shell('mv /tmp/modules/* /etc/puppet/modules')
     end
