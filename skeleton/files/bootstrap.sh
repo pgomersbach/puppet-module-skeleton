@@ -2,7 +2,11 @@
 #
 # This script installs puppet 3.x or 4.x on ubuntu and centos
 #
-#set -e
+# Usage:
+# Ubuntu: wget https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh; bash bootstrap.sh
+#
+# Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh -o bootstrap.sh; bash bootstrap.sh
+
 
 # default major version, comment to install puppet 3.x
 PUPPETMAJOR=4
@@ -72,6 +76,7 @@ grep -i "Red Hat" /etc/redhat-release
 if [ $? -eq 0 ]; then
     provision_rhel
 fi
+
 grep -i "CentOS" /etc/redhat-release
 if [ $? -eq 0 ]; then
     provision_rhel
