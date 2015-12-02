@@ -31,9 +31,31 @@ function provision_ubuntu {
 }
 
 function provision_rhel() {
+    # get release info
+    grep -i "7" /etc/redhat-release
+    if [ $? -eq 0 ]; then
+      RHMAJOR=7
+    fi
+    grep -i "6" /etc/redhat-release
+    if [ $? -eq 0 ]; then
+      RHMAJOR=6
+    fi
+    if [ $PUPPETMAJOR -eq 4 ]; then
+      REPO_RPM_URL="http://yum.puppetlabs.com/puppetlabs-release-pc1-el-${RHMAJOR}.noarch.rpm"
+      AGENTNAME="puppet-agent"
+    else
+      REPO_RPM_URL="http://yum.puppetlabs.com/puppetlabs-release-el-${RHMAJOR}.noarch.rpm"
+      AGENTNAME="puppet"
+    fi
+    yum install -y wget > /dev/null
+    # configure repos
     echo "Configuring PuppetLabs repo..."
-    # rpm -ivh https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
-    # yum install -y puppet
+    repo_rpm_path=$(mktemp)
+    wget --output-document="${repo_rpm_path}" "${REPO_RPM_URL}" 2>/dev/null
+    rpm -i "${repo_path}" >/dev/null
+    # install puppet
+    echo "Installing Puppet..."
+    yum install -y $AGENTNAME >/dev/null
 }
 
 if [ "$(id -u)" != "0" ]; then
@@ -46,7 +68,7 @@ if [ $? -eq 0 ]; then
     provision_ubuntu
 fi
 
-grep -i "red hat" /etc/issue
+grep -i "Red Hat" /etc/redhat-release
 if [ $? -eq 0 ]; then
     provision_rhel
 fi
