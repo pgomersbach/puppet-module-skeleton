@@ -52,7 +52,7 @@ function provision_rhel() {
     echo "Configuring PuppetLabs repo..."
     repo_rpm_path=$(mktemp)
     wget --output-document="${repo_rpm_path}" "${REPO_RPM_URL}" 2>/dev/null
-    rpm -i "${repo_path}" >/dev/null
+    rpm -i "${repo_rpm_path}" >/dev/null
     # install puppet
     echo "Installing Puppet..."
     yum install -y $AGENTNAME >/dev/null
