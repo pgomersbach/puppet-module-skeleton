@@ -72,7 +72,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 if [ "$#" -gt 0 ]; then
-   if [ "$1" = 3; then
+   if [ "$1" = 3 ]; then
      PUPPETMAJOR=3
    else
      PUPPETMAJOR=4
