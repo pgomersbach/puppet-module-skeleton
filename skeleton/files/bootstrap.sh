@@ -72,6 +72,10 @@ grep -i "Red Hat" /etc/redhat-release
 if [ $? -eq 0 ]; then
     provision_rhel
 fi
+grep -i "CentOS" /etc/redhat-release
+if [ $? -eq 0 ]; then
+    provision_rhel
+fi
 
 if [ $PUPPETMAJOR -eq 4 ]; then
     # make symlinks
