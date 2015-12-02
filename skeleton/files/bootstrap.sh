@@ -80,24 +80,24 @@ if [ $? -eq 0 ]; then
     provision_ubuntu
 fi
 
-
-grep -i "Red Hat" /etc/redhat-release
-if [ $? -eq 0 ]; then
-    provision_rhel
-fi
-
-grep -i "CentOS" /etc/redhat-release
-if [ $? -eq 0 ]; then
-    provision_rhel
+if [ -f /etc/redhat-release ]; then
+  grep -i "Red Hat" /etc/redhat-release
+  if [ $? -eq 0 ]; then
+      provision_rhel
+  fi
+  grep -i "CentOS" /etc/redhat-release
+  if [ $? -eq 0 ]; then
+      provision_rhel
+  fi
 fi
 
 if [ $PUPPETMAJOR -eq 4 ]; then
     # make symlinks
     echo "Set symlinks"
-    FILES=/opt/puppetlabs/bin/*
+    FILES="/opt/puppetlabs/bin/*"
     for f in $FILES
     do
       filename="${f##*/}"
-      ln -f -s $f /usr/local/bin/$filename
+      ln -f -s "$f" "/usr/local/bin/${filename}"
     done
 fi
