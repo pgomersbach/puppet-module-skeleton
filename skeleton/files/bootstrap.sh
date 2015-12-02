@@ -17,7 +17,7 @@ function provision_ubuntu {
     if [ -f /etc/lsb-release ]; then
       . /etc/lsb-release
     else
-      DISTRIB_CODENAME=DISTRIB_CODENAME=$(lsb_release -c -s)
+      DISTRIB_CODENAME=$(lsb_release -c -s)
     fi
     if [ $PUPPETMAJOR -eq 4 ]; then
       REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb"
