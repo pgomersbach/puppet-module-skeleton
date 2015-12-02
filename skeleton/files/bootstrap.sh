@@ -34,7 +34,7 @@ function provision_ubuntu {
     apt-get update >/dev/null
     # Install Puppet
     echo "Installing Puppet..."
-    apt-get -y  install $AGENTNAME >/dev/null
+    apt-get -y install git $AGENTNAME >/dev/null
     echo "Puppet installed!"
 }
 
@@ -55,7 +55,7 @@ function provision_rhel() {
       REPO_RPM_URL="http://yum.puppetlabs.com/puppetlabs-release-el-${RHMAJOR}.noarch.rpm"
       AGENTNAME="puppet"
     fi
-    yum install -y wget > /dev/null
+    yum install -y wget git > /dev/null
     # configure repos
     echo "Configuring PuppetLabs repo..."
     repo_rpm_path=$(mktemp)
