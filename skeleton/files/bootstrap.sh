@@ -6,10 +6,10 @@
 # Ubuntu / Debian: wget https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh; bash bootstrap.sh
 #
 # Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh -o bootstrap.sh; bash bootstrap.sh
-
+# Options: add 3 as parameter to install 4.x release
 
 # default major version, comment to install puppet 3.x
-PUPPETMAJOR=4
+PUPPETMAJORVERSION=4
 
 ### Code start ###
 function provision_ubuntu {
@@ -70,6 +70,17 @@ if [ "$(id -u)" != "0" ]; then
   echo "This script must be run as root." >&2
   exit 1
 fi
+
+if [ "$#" -gt 0 ]; then
+   if [ "$1" = 3; then
+     PUPPETMAJOR=3
+   else
+     PUPPETMAJOR=4
+  fi
+else
+  PUPPETMAJOR=$PUPPETMAJORVERSION
+fi
+echo $PUPPETMAJOR
 
 grep -i "ubuntu" /etc/issue
 if [ $? -eq 0 ]; then
