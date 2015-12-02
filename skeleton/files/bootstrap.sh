@@ -3,7 +3,7 @@
 # This script installs puppet 3.x or 4.x on ubuntu and centos
 #
 # Usage:
-# Ubuntu: wget https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh; bash bootstrap.sh
+# Ubuntu / Debian: wget https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh; bash bootstrap.sh
 #
 # Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh -o bootstrap.sh; bash bootstrap.sh
 
@@ -14,7 +14,11 @@ PUPPETMAJOR=4
 ### Code start ###
 function provision_ubuntu {
     # get release info
-    . /etc/lsb-release
+    if [ -f /etc/lsb-release ]; then
+      . /etc/lsb-release
+    else
+      DISTRIB_CODENAME=DISTRIB_CODENAME=$(lsb_release -c -s)
+    fi
     if [ $PUPPETMAJOR -eq 4 ]; then
       REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb"
       AGENTNAME="puppet-agent"
@@ -71,6 +75,11 @@ grep -i "ubuntu" /etc/issue
 if [ $? -eq 0 ]; then
     provision_ubuntu
 fi
+grep -i "Debian" /etc/issue
+if [ $? -eq 0 ]; then
+    provision_ubuntu
+fi
+
 
 grep -i "Red Hat" /etc/redhat-release
 if [ $? -eq 0 ]; then
