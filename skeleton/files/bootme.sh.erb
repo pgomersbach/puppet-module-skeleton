@@ -29,6 +29,9 @@ else
   PUPPETMAJOR=$PUPPETMAJORVERSION
 fi
 
+# install dependencies
+apt-get install git bundler zlib1g-dev -y || yum install -y git bundler zlib-devel
+
 # get or update repo
 if [ -d /root/<%= metadata.name %> ]; then
   echo "Update repo"
