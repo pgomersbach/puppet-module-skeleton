@@ -20,13 +20,17 @@ fi
 if [ "$#" -gt 0 ]; then
    if [ "$1" = 3 ]; then
      PUPPETMAJOR=3
-     MODULEDIR="/etc/puppet/modules/"
    else
      PUPPETMAJOR=4
-     MODULEDIR="/etc/puppetlabs/code/modules/"
   fi
 else
   PUPPETMAJOR=$PUPPETMAJORVERSION
+fi
+
+if [ "$PUPPETMAJOR" = 3 ]; then
+    MODULEDIR="/etc/puppet/modules/"
+  else
+    MODULEDIR="/etc/puppetlabs/code/modules/"
 fi
 
 # install dependencies
