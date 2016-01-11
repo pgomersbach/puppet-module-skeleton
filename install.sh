@@ -9,11 +9,15 @@ repo_deb_path=$(mktemp)
 wget --output-document="${repo_deb_path}" "${REPO_DEB_URL}"
 sudo dpkg -i "${repo_deb_path}"
 
+# Install ruby ppa
+sudo apt-get install -y software-properties-common
+sudo apt-add-repository -y ppa:brightbox/ruby-ng
+
 # Update repo's
 sudo apt-get update
 
 # Install packages
-sudo apt-get -y install git bundler puppet libxslt-dev libxml2-dev zlib1g-dev
+sudo apt-get -y install ruby2.1 ruby2.1-dev git bundler puppet libxslt-dev libxml2-dev zlib1g-dev
 
 # Clone skeleton repo
 git clone https://github.com/pgomersbach/puppet-module-skeleton
