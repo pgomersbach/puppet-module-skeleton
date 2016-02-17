@@ -55,9 +55,9 @@ fi
 
 # install puppet if not installed
 if which puppet > /dev/null 2>&1; then
-    bash /root/<%= metadata.name %>/files/bootstrap.sh $PUPPETMAJOR
+   echo "Puppet is already installed."
   else
-    echo "Puppet is already installed."
+    bash /root/<%= metadata.name %>/files/bootstrap.sh $PUPPETMAJOR
 fi
 
 # prepare bundle
