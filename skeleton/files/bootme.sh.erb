@@ -62,7 +62,7 @@ fi
 
 # prepare bundle
 echo "Installing gems"
-bundle install --path vendor/bundle --without development test system_tests
+bundle install --path vendor/bundle --without development system_tests
 # install dependencies from .fixtures
 echo "Preparing modules"
 bundle exec rake spec_prep
