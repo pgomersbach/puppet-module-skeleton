@@ -1,0 +1,15 @@
+HOSTS:
+  debian-0608-x64:
+    roles:
+      - master
+    vmname: debian68
+    platform: debian-0608-amd64
+    amisize: m3.medium
+    hypervisor: ec2
+    snapshot: foss
+    user: admin
+CONFIG:
+  log_level: verbose
+  nfs_server: none
+  consoleport: 443
+  type: foss
