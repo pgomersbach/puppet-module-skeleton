@@ -23,6 +23,8 @@ class <%= metadata.name %><% if metadata.name.start_with?('role_') %>
 ) inherits ::<%= metadata.name %>::params {
 
   # validate parameters here
+  validate_string($package_name)
+  validate_string($service_name)
 
   class { '::<%= metadata.name %>::install': } ->
   class { '::<%= metadata.name %>::config': } ~>
