@@ -3,6 +3,10 @@
 # This class is called from <%= metadata.name %> for install.
 #
 class <%= metadata.name %>::install {
+  # prevent direct use of subclass
+  if $caller_module_name != $module_name {
+    fail("Use of private class ${name} by ${caller_module_name}")
+  }
 
   package { $::<%= metadata.name %>::package_name:
     ensure => present,
