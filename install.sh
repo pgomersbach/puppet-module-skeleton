@@ -41,6 +41,7 @@ function provision_ubuntu {
     echo "Puppet installed!"
     echo "Install development packages"
     sudo apt-get -y install ruby2.2 ruby2.2-dev bundler libxslt-dev libxml2-dev zlib1g-dev >/dev/null
+    return 0
 }
 
 function provision_rhel() {
@@ -60,15 +61,19 @@ function provision_rhel() {
       REPO_RPM_URL="http://yum.puppetlabs.com/puppetlabs-release-el-${RHMAJOR}.noarch.rpm"
       AGENTNAME="puppet"
     fi
-    yum install -y wget git > /dev/null
+    sudo yum install -y wget git > /dev/null
     # configure repos
     echo "Configuring PuppetLabs repo..."
     repo_rpm_path=$(mktemp)
     wget --output-document="${repo_rpm_path}" "${REPO_RPM_URL}" 2>/dev/null
-    rpm -i "${repo_rpm_path}" >/dev/null
+    sudo rpm -i "${repo_rpm_path}" >/dev/null
     # install puppet
     echo "Installing Puppet..."
-    yum install -y $AGENTNAME >/dev/null
+    sudo yum install -y $AGENTNAME >/dev/null
+    echo "Puppet installed!"
+    echo "Install development packages"
+    sudo yum install -y ruby2.2 ruby2.2-dev bundler libxslt-dev libxml2-dev zlib1g-dev >/dev/null
+    return 0
 }
 
 if [ "$#" -gt 0 ]; then
