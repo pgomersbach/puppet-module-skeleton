@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# This script installs puppet 3.x or 4.x on ubuntu and centos
+# This script installs puppet 3.x or 4.x on ubuntu and centos, installs bundler, ruby and the puppet module skeleton
 #
 # Usage:
-# Ubuntu / Debian: wget https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh; bash bootstrap.sh
+# Ubuntu / Debian: wget https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/install.sh; bash install.sh
 #
-# Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/skeleton/files/bootstrap.sh -o bootstrap.sh; bash bootstrap.sh
+# Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/install.sh -o bootstrap.sh; bash install.sh
 # Options: add 3 as parameter to install 4.x release
 set -e
 # default major version, comment to install puppet 3.x
