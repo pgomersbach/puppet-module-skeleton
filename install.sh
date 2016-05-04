@@ -7,7 +7,7 @@
 #
 # Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/puppet-module-skeleton/master/install.sh -o bootstrap.sh; bash install.sh
 # Options: add 3 as parameter to install 4.x release
-set -e
+# set -e
 # default major version, comment to install puppet 3.x
 PUPPETMAJORVERSION=4
 
@@ -114,7 +114,7 @@ if [ $PUPPETMAJOR -eq 4 ]; then
     for f in $FILES
     do
       filename="${f##*/}"
-      ln -f -s "$f" "/usr/local/bin/${filename}"
+      sudo ln -f -s "$f" "/usr/local/bin/${filename}"
     done
 fi
 
