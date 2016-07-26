@@ -10,7 +10,7 @@
 
 # default major version, comment to install puppet 3.x
 PUPPETMAJORVERSION=4
-
+export DEBIAN_FRONTEND=noninteractive
 ### Code start ###
 function provision_ubuntu {
     # get release info
@@ -31,10 +31,10 @@ function provision_ubuntu {
     repo_deb_path=$(mktemp)
     wget --output-document="${repo_deb_path}" "${REPO_DEB_URL}" 2>/dev/null
     dpkg -i "${repo_deb_path}" >/dev/null
-    apt-get update >/dev/null
+    apt-get -q update >/dev/null
     # Install Puppet
     echo "Installing Puppet..."
-    apt-get -y install git $AGENTNAME >/dev/null
+    apt-get -y -q --force-yes install git $AGENTNAME >/dev/null
     echo "Puppet installed!"
 }
 
