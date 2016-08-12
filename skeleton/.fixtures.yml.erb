@@ -1,6 +1,8 @@
 fixtures:
+  forge_modules:
+    stdlib: "puppetlabs/stdlib"
+
   repositories:
-    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
 <% if metadata.name.start_with?('role_') %> 
 # role module layout, include profile base and ntp module
     profile_base: "https://github.com/relybv/<%= metadata.full_module_name.sub(metadata.name, "profile_base") %>.git"
