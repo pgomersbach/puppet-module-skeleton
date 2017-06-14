@@ -68,4 +68,4 @@ echo "Preparing modules"
 cp -a /root/<%= metadata.name %>/spec/fixtures/modules/* $MODULEDIR
 
 echo "Run puppet apply"
-/usr/local/bin/puppet apply -e "include <%= metadata.name %>"
+/usr/local/bin/puppet apply -e "include <%= metadata.name %>" --write-catalog-summary
